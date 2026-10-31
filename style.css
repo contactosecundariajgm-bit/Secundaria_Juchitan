@@ -1372,6 +1372,153 @@ address {
   letter-spacing: 0.04em;
 }
 
+/* --- 10.5. Sección Preguntas Frecuentes de Inscripción (Acordeón) --- */
+.faq-section {
+  background-color: var(--bg-subtle);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(217, 119, 6, 0.04) 0%, transparent 60%),
+    radial-gradient(circle at 90% 80%, rgba(184, 74, 40, 0.05) 0%, transparent 60%);
+  position: relative;
+}
+
+.faq-accordion-container {
+  max-width: 880px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.faq-item {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-warm);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(34, 28, 24, 0.04);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.faq-item:hover {
+  border-color: var(--border-warm-hover);
+  box-shadow: 0 8px 22px rgba(184, 74, 40, 0.08);
+}
+
+.faq-item[open] {
+  border-color: rgba(184, 74, 40, 0.45);
+  box-shadow: var(--shadow-card);
+  background: linear-gradient(180deg, #FFFFFF 0%, #FFFDF9 100%);
+}
+
+/* Garantizar que la respuesta permanezca plegada y oculta salvo al abrirse */
+.faq-item:not([open]) > *:not(summary) {
+  display: none !important;
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.35rem 1.75rem;
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.4;
+  outline: none;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Ocultar marcador estándar en todos los navegadores */
+.faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-question::marker {
+  display: none;
+  content: "";
+}
+
+.faq-question:hover {
+  color: var(--color-primary);
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.faq-item[open] .faq-question {
+  color: var(--color-primary-dark);
+}
+
+.faq-question-text {
+  flex: 1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.faq-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  transition: transform var(--transition-normal), background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.faq-icon {
+  transition: transform var(--transition-normal);
+}
+
+.faq-item[open] .faq-icon-wrapper {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 1.75rem 1.65rem 1.75rem;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+  border-top: 1px solid rgba(216, 198, 180, 0.4);
+  padding-top: 1.25rem;
+  animation: faqAccordionFadeIn 0.3s ease-out;
+}
+
+.faq-answer p {
+  margin: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.faq-answer strong {
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+@keyframes faqAccordionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* --- 11. Footer y Contactos (Instrucción 2) --- */
 .site-footer {
   background-color: var(--bg-dark);
@@ -1964,6 +2111,30 @@ address {
 
   .postit-body {
     font-size: 0.875rem !important;
+  }
+
+  /* Preguntas Frecuentes de Inscripción (Acordeón) en Celular */
+  .faq-accordion-container {
+    gap: 0.85rem !important;
+  }
+
+  .faq-question {
+    padding: 1.15rem 1.15rem !important;
+    font-size: 0.975rem !important;
+    gap: 0.85rem !important;
+  }
+
+  .faq-icon-wrapper {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+  }
+
+  .faq-answer {
+    padding: 0 1.15rem 1.25rem 1.15rem !important;
+    padding-top: 0.95rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.65 !important;
   }
 
   /* Footer en Celular */
